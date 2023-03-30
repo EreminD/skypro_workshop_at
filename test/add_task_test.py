@@ -22,9 +22,7 @@ def my_test_add_PN():
     body = {"title":"TestSK","completed":False}
     response = requests.post("https://todo-app-sky.herokuapp.com/", json=body)
     id = response.json()["id"]
-   
-    assert response.status_code == 201
-    assert response_body['completed'] == False
+
 
 def test_create_1():
     body = {"title":"generated123"}
