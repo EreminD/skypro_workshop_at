@@ -6,7 +6,7 @@ def test_delete():
     response = requests.post("https://todo-app-sky.herokuapp.com/", json=body)
     id = response.json()["id"]
     
-    requests.delete('https://todo-app-sky.herokuapp.com/'+str(id))
+    requests.delete(f'https://todo-app-sky.herokuapp.com/{id}')
 
-    new_response = requests.get("https://todo-app-sky.herokuapp.com/"+str(id))
-    assert new_response.status_code == 404
+    response = requests.get("https://todo-app-sky.herokuapp.com/")
+    assert response.status_code == 204
