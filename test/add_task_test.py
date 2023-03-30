@@ -14,7 +14,7 @@ def test_create_1():
     response = requests.post("https://todo-app-sky.herokuapp.com/", json=body)
     response_body = response.json()
 
-    assert response_body['title'] == 'generated123'
+    assert response_body['title'] == body['title']
     assert response_body['completed'] == False
 
 
@@ -23,5 +23,5 @@ def test_create_2():
     response = requests.post("https://todo-app-sky.herokuapp.com/", json=body)
     response_body = response.json()
 
-    assert response_body['title'] == 'generated'
-    assert response_body['completed'] == False
+    assert response_body['title'] == body['title']
+    assert response_body['completed'] == body['completed']
