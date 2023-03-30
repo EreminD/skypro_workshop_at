@@ -15,6 +15,7 @@ def test_create_1():
     response_body = response.json()
 
     assert response_body['title'] == 'generated123'
+    assert response_body['completed'] == False
 
 
 def test_create_2():
