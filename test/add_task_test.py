@@ -1,10 +1,28 @@
 import requests
 
-def test_add():
-    body = {"title":"generated","completed":False}
+
+def my_test_add_P():
+    body = {"title":"Positive","completed":False}
     response = requests.post("https://todo-app-sky.herokuapp.com/", json=body)
-    response_body = response.json()
+    id = response.json()["id"]
     
+    body = {"order": 0}
+    response = requests.patch(f'https://todo-app-sky.herokuapp.com/{id}', json=body)
+
+
+def my_test_add_N():
+    body = {"title":"Negative","completed":False}
+    response = requests.post("https://todo-app-sky.herokuapp.com/", json=body)
+    id = response.json()["id"]
+    
+    body = {"order": -1}
+    response = requests.patch(f'https://todo-app-sky.herokuapp.com/{id}', json=body)
+
+def my_test_add_PN():
+    body = {"title":"TestSK","completed":False}
+    response = requests.post("https://todo-app-sky.herokuapp.com/", json=body)
+    id = response.json()["id"]
+   
     assert response.status_code == 201
     assert response_body['completed'] == False
 
