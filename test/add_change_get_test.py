@@ -6,11 +6,10 @@ def test_add_change_get():
     id = response.json()["id"]
 
     body = {"completed": True}
-    path = "https://todo-app-sky.herokuapp.com/{id}".format(id = id, json = body)
+    path = "https://todo-app-sky.herokuapp.com/{id}".format(id = id)
 
-    response = requests.patch(path, json = body)
+    requests.patch(path, json = body)
 
     response = requests.get(path.format(id = id))
-    completed = response.json()["completed"]
 
     assert response.json()['completed'] == True
